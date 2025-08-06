@@ -1,0 +1,42 @@
+services:
+  # Backend API Service
+  - type: web
+    name: finan-wallet-backend
+    env: node
+    plan: starter
+    rootDir: ./backend
+    buildCommand: npm install && npm run build && npx prisma generate && npx prisma db push
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: finan-wallet-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_WALLET_ADDRESS
+        value: "0x742d35Cc6634C0532925a3b8D5c9C1A9c3e8e8e8"
+      - key: PRIVATE_KEY_ADMIN
+        value: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      - key: CORS_ORIGIN
+        value: "https://finan-wallet-admin.onrender.com"
+
+  # Admin Panel Service  
+  - type: web
+    name: finan-wallet-admin
+    env: node
+    plan: starter
+    rootDir: ./admin
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: "https://finan-wallet-backend.onrender.com/api"
+
+databases:
+  - name: finan-wallet-db
+    plan: starter

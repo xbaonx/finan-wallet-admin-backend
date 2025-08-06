@@ -1,0 +1,37 @@
+{
+  "name": "finan-wallet-monorepo",
+  "version": "1.0.0",
+  "description": "Complete Finan Wallet system - Backend API and Admin Panel",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:admin": "cd admin && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\"",
+    "build:backend": "cd backend && npm run build",
+    "build:admin": "cd admin && npm run build",
+    "build": "npm run build:backend && npm run build:admin",
+    "install:backend": "cd backend && npm install",
+    "install:admin": "cd admin && npm install",
+    "install:all": "npm run install:backend && npm run install:admin",
+    "prisma:generate": "cd backend && npm run prisma:generate",
+    "prisma:push": "cd backend && npm run prisma:push",
+    "prisma:seed": "cd backend && npm run prisma:seed",
+    "start:backend": "cd backend && npm run start:prod",
+    "start:admin": "cd admin && npm start"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "wallet",
+    "bsc",
+    "p2p",
+    "trading",
+    "nestjs",
+    "nextjs",
+    "admin-panel"
+  ],
+  "author": "Finan Wallet Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
