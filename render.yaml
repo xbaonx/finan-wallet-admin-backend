@@ -39,4 +39,4 @@ services:
 
 databases:
   - name: finan-wallet-db
-    plan: starter
+    plan: free
