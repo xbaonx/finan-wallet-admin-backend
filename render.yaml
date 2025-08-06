@@ -5,7 +5,7 @@ services:
     env: node
     plan: starter
     rootDir: ./backend
-    buildCommand: npm install && npx prisma generate && npm run build:debug && npx prisma db push
+    buildCommand: npm install && npx prisma generate && npm run build && npx prisma db push
     startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
