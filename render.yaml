@@ -5,8 +5,8 @@ services:
     env: node
     plan: starter
     rootDir: ./backend
-    buildCommand: npm install && npx prisma generate && npm run build && npx prisma db push
-    startCommand: npm run start:prod
+    buildCommand: cd backend && npm install && npx prisma generate && npm run build && npx prisma db push
+    startCommand: cd backend && npm run start:prod
     envVars:
       - key: NODE_ENV
         value: production
@@ -31,8 +31,8 @@ services:
     env: node
     plan: starter
     rootDir: ./admin
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: cd admin && npm install && npm run build
+    startCommand: cd admin && npm start
     envVars:
       - key: NEXT_PUBLIC_API_URL
         value: "https://finan-wallet-backend.onrender.com/api"
